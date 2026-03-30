@@ -1,0 +1,918 @@
+[
+  {
+    "recipe_id": 1,
+    "recipe_name": "Andhra Chicken Biryani",
+    "ingredients": ["basmati rice", "chicken", "yogurt", "ginger-garlic paste", "biryani masala", "green chilies", "mint leaves", "coriander leaves", "onions", "lemon", "ghee", "oil", "salt"],
+    "nutritions": {"calories": 450, "protein_g": 35, "carbs_g": 55, "fat_g": 12},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Festive / High Protein",
+    "health_score": 75,
+    "image_link": "https://th.bing.com/th/id/OIP.cmsSReIqbTzL_vljiasx3QHaHa?w=183&h=183&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Marinate chicken with yogurt, ginger-garlic paste, and spices for 2 hours",
+      "Fry onions until golden brown and set aside",
+      "Layer marinated chicken and partially cooked rice in a heavy-bottomed vessel",
+      "Add fried onions, mint, and coriander between layers",
+      "Cook on dum (slow heat) for 20-25 minutes",
+      "Serve hot with raita"
+    ]
+  },
+  {
+    "recipe_id": 2,
+    "recipe_name": "Gongura Mutton",
+    "ingredients": ["mutton", "gongura leaves", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 380, "protein_g": 40, "carbs_g": 15, "fat_g": 18},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Traditional / High Protein",
+    "health_score": 80,
+    "image_link": "https://th.bing.com/th/id/OIP.Ly6h2Tq5MM398-xkpdLqeQHaFf?w=218&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Pressure cook mutton with salt and turmeric until tender",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add gongura leaves and cook until soft",
+      "Mix in cooked mutton and simmer for 10 minutes",
+      "Prepare tempering with mustard seeds and curry leaves",
+      "Combine and serve hot with rice"
+    ]
+  },
+  {
+    "recipe_id": 3,
+    "recipe_name": "Royyala Iguru (Prawn Curry)",
+    "ingredients": ["prawns", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 280, "protein_g": 35, "carbs_g": 12, "fat_g": 10},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Coastal / High Protein",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.mnbss8XeGnVx8_7rZxenSgHaEK?w=310&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Clean and marinate prawns with turmeric and salt",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add prawns and cook for 8-10 minutes",
+      "Prepare tempering and add to curry",
+      "Garnish with coriander leaves"
+    ]
+  },
+  {
+    "recipe_id": 4,
+    "recipe_name": "Andhra Style Fish Curry",
+    "ingredients": ["fish pieces", "tamarind", "onions", "tomatoes", "red chili powder", "turmeric", "mustard seeds", "fenugreek seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 320, "protein_g": 38, "carbs_g": 15, "fat_g": 12},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Coastal / High Protein",
+    "health_score": 82,
+    "image_link": "https://th.bing.com/th/id/OIP.SzkfLSl3HCW42aEx0OHAcAHaE7?w=226&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Soak tamarind and extract pulp",
+      "Sauté onions and tomatoes until soft",
+      "Add spices and tamarind pulp, cook until raw smell disappears",
+      "Add fish pieces and simmer for 15 minutes",
+      "Prepare tempering with mustard and fenugreek seeds",
+      "Serve hot with rice"
+    ]
+  },
+  {
+    "recipe_id": 5,
+    "recipe_name": "Andhra Special Egg Curry",
+    "ingredients": ["eggs", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 280, "protein_g": 20, "carbs_g": 15, "fat_g": 15},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "High Protein / Quick Meal",
+    "health_score": 78,
+    "image_link": "https://th.bing.com/th/id/OIP.8DgzO2ryIUX_ziDHLzOjuAHaHa?w=181&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+    "steps": [
+      "Boil eggs and make slits on them",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add boiled eggs and simmer for 10 minutes",
+      "Prepare tempering and add to curry",
+      "Garnish with coriander leaves"
+    ]
+  },
+  {
+    "recipe_id": 6,
+    "recipe_name": "Andhra Chicken Pulao",
+    "ingredients": ["basmati rice", "chicken", "onions", "ginger-garlic paste", "green chilies", "mint leaves", "coriander leaves", "whole spices", "ghee", "oil", "salt"],
+    "nutritions": {"calories": 420, "protein_g": 30, "carbs_g": 50, "fat_g": 12},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "One-Pot Meal / Balanced",
+    "health_score": 80,
+    "image_link": "https://th.bing.com/th/id/OIP.O2iz6LipEpLNeAcQ9vDQVAHaFP?w=226&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Sauté onions and whole spices in ghee",
+      "Add chicken and cook until browned",
+      "Add rice and water in correct proportion",
+      "Cook on low heat until rice is done",
+      "Garnish with mint and coriander",
+      "Serve hot with raita"
+    ]
+  },
+  {
+    "recipe_id": 7,
+    "recipe_name": "Andhra Special Chicken Fry",
+    "ingredients": ["chicken", "ginger-garlic paste", "red chili powder", "turmeric", "coriander powder", "lemon juice", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 350, "protein_g": 35, "carbs_g": 8, "fat_g": 18},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "High Protein / Appetizer",
+    "health_score": 75,
+    "image_link": "https://th.bing.com/th/id/OIP.oS4WnCsgMl7qvEwDWg188QHaE8?w=286&h=191&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Marinate chicken with spices and lemon juice for 2 hours",
+      "Heat oil in a pan and add curry leaves",
+      "Add marinated chicken and cook on medium heat",
+      "Fry until chicken is crispy and cooked through",
+      "Serve hot as starter or with rice"
+    ]
+  },
+  {
+    "recipe_id": 8,
+    "recipe_name": "Andhra Mutton Curry",
+    "ingredients": ["mutton", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "whole spices", "oil", "salt"],
+    "nutritions": {"calories": 380, "protein_g": 42, "carbs_g": 12, "fat_g": 18},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Traditional / High Protein",
+    "health_score": 78,
+    "image_link": "https://th.bing.com/th/id/OIP.FDhqKVhm0iffCATsU8lLYQHaE8?w=272&h=181&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Pressure cook mutton with salt and turmeric",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add cooked mutton and simmer for 15 minutes",
+      "Garnish with coriander leaves",
+      "Serve hot with rice or roti"
+    ]
+  },
+  {
+    "recipe_id": 9,
+    "recipe_name": "Andhra Style Crab Curry",
+    "ingredients": ["crabs", "tamarind", "onions", "tomatoes", "red chili powder", "turmeric", "mustard seeds", "fenugreek seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 300, "protein_g": 35, "carbs_g": 12, "fat_g": 12},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Coastal / High Protein",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.4GInvhIy05ku29-Ora4-6wHaEK?w=333&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Clean crabs thoroughly",
+      "Soak tamarind and extract pulp",
+      "Sauté onions and tomatoes until soft",
+      "Add spices and tamarind pulp, cook well",
+      "Add crabs and simmer for 20 minutes",
+      "Serve hot with rice"
+    ]
+  },
+  {
+    "recipe_id": 10,
+    "recipe_name": "Andhra Chicken 65",
+    "ingredients": ["chicken", "yogurt", "ginger-garlic paste", "red chili powder", "turmeric", "corn flour", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 320, "protein_g": 32, "carbs_g": 15, "fat_g": 15},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Appetizer / High Protein",
+    "health_score": 70,
+    "image_link": "https://th.bing.com/th/id/OIP.VKxFfTCCf0BpiDyDGeN8KgHaEK?w=299&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Marinate chicken with yogurt and spices for 2 hours",
+      "Add corn flour to marinated chicken",
+      "Deep fry chicken pieces until golden brown",
+      "Temper with curry leaves in hot oil",
+      "Toss fried chicken in tempering",
+      "Serve hot as starter"
+    ]
+  },
+  {
+    "recipe_id": 11,
+    "recipe_name": "Andhra Special Veg Biryani",
+    "ingredients": ["basmati rice", "mixed vegetables", "onions", "ginger-garlic paste", "green chilies", "mint leaves", "coriander leaves", "whole spices", "ghee", "oil", "salt"],
+    "nutritions": {"calories": 380, "protein_g": 12, "carbs_g": 65, "fat_g": 10},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Festive / Balanced",
+    "health_score": 85,
+    "image_link": "https://tse1.mm.bing.net/th/id/OIP.Xg2eQv4ouwU99OSbkR9s2gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "steps": [
+      "Sauté onions and whole spices in ghee",
+      "Add vegetables and cook until half done",
+      "Add rice and water in correct proportion",
+      "Cook on low heat until rice is done",
+      "Garnish with mint and coriander",
+      "Serve hot with raita"
+    ]
+  },
+  {
+    "recipe_id": 12,
+    "recipe_name": "Andhra Style Paneer Curry",
+    "ingredients": ["paneer", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 320, "protein_g": 18, "carbs_g": 20, "fat_g": 18},
+    "veg_nonveg": "Veg",
+    "diet_goal": "High Protein / Vegetarian",
+    "health_score": 80,
+    "image_link": "https://th.bing.com/th/id/OIP.Ybwv0iJrsM9_tfePzc2wywAAAA?w=172&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add paneer cubes and simmer for 10 minutes",
+      "Prepare tempering with mustard seeds and curry leaves",
+      "Combine and garnish with coriander leaves",
+      "Serve hot with roti or rice"
+    ]
+  },
+  {
+    "recipe_id": 13,
+    "recipe_name": "Andhra Special Aloo Curry",
+    "ingredients": ["potatoes", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 280, "protein_g": 8, "carbs_g": 45, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Vegetarian / Comfort Food",
+    "health_score": 75,
+    "image_link": "https://th.bing.com/th/id/OIP.6Z7VSL3BizzUpFjamtuEQAAAAA?w=300&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Boil potatoes and cut into cubes",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add potato cubes and simmer for 10 minutes",
+      "Prepare tempering and add to curry",
+      "Serve hot with roti or rice"
+    ]
+  },
+  {
+    "recipe_id": 14,
+    "recipe_name": "Andhra Style Baingan Bharta",
+    "ingredients": ["brinjal", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 220, "protein_g": 6, "carbs_g": 30, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Vegetarian / Low Calorie",
+    "health_score": 82,
+    "image_link": "https://th.bing.com/th/id/OIP.sQA6oophqkpUYxYMq9xliwHaJ4?w=119&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Roast brinjal until skin chars and flesh is soft",
+      "Peel and mash the brinjal",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add mashed brinjal and cook for 10 minutes",
+      "Serve hot with roti"
+    ]
+  },
+  {
+    "recipe_id": 15,
+    "recipe_name": "Andhra Special Dal Tadka",
+    "ingredients": ["toor dal", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "ghee", "salt"],
+    "nutritions": {"calories": 250, "protein_g": 15, "carbs_g": 35, "fat_g": 6},
+    "veg_nonveg": "Veg",
+    "diet_goal": "High Protein / Vegetarian",
+    "health_score": 88,
+    "image_link": "https://th.bing.com/th/id/OIP.T_zdJ55yuoEaVwyfmV78ZwHaLO?w=119&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Pressure cook dal with turmeric and salt",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Mix with cooked dal and simmer for 10 minutes",
+      "Prepare tempering with ghee and spices",
+      "Pour tempering over dal and serve hot"
+    ]
+  },
+  {
+    "recipe_id": 16,
+    "recipe_name": "Andhra Style Chana Masala",
+    "ingredients": ["chickpeas", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "chana masala powder", "oil", "salt"],
+    "nutritions": {"calories": 320, "protein_g": 18, "carbs_g": 45, "fat_g": 10},
+    "veg_nonveg": "Veg",
+    "diet_goal": "High Protein / Vegetarian",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.JGDSrOIBtfFkuceb3zzAxgHaHa?w=182&h=242&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Soak chickpeas overnight and pressure cook",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add cooked chickpeas and simmer for 15 minutes",
+      "Garnish with coriander leaves",
+      "Serve hot with roti or rice"
+    ]
+  },
+  {
+    "recipe_id": 17,
+    "recipe_name": "Andhra Special Vegetable Curry",
+    "ingredients": ["mixed vegetables", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 280, "protein_g": 10, "carbs_g": 40, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Vegetarian / Balanced",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.WYXMkghkIskO2e2gd8KadwHaE7?w=249&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Chop vegetables into uniform pieces",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add vegetables and cook until tender",
+      "Prepare tempering and add to curry",
+      "Serve hot with roti or rice"
+    ]
+  },
+  {
+    "recipe_id": 18,
+    "recipe_name": "Andhra Style Mushroom Curry",
+    "ingredients": ["mushrooms", "onions", "tomatoes", "ginger-garlic paste", "red chili powder", "coriander powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 220, "protein_g": 15, "carbs_g": 20, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "High Protein / Vegetarian",
+    "health_score": 82,
+    "image_link": "https://th.bing.com/th/id/OIP.qPPT5FQ20Q1ygwE0LRW1UgHaEK?w=301&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Clean and slice mushrooms",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until oil separates",
+      "Add mushrooms and cook for 10-12 minutes",
+      "Prepare tempering and add to curry",
+      "Serve hot with roti or rice"
+    ]
+  },
+  {
+    "recipe_id": 19,
+    "recipe_name": "Andhra Special Tomato Rice",
+    "ingredients": ["rice", "tomatoes", "onions", "ginger-garlic paste", "red chili powder", "turmeric", "mustard seeds", "cumin seeds", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 350, "protein_g": 8, "carbs_g": 65, "fat_g": 6},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Quick Meal / Vegetarian",
+    "health_score": 80,
+    "image_link": "https://th.bing.com/th/id/OIP.9a0odrtR_i1Pkj6SkrbdhwHaFx?w=194&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Cook rice and set aside to cool",
+      "Sauté onions, ginger-garlic paste, and tomatoes",
+      "Add spices and cook until tomatoes are mushy",
+      "Mix with cooked rice gently",
+      "Prepare tempering and add to rice",
+      "Serve hot with raita"
+    ]
+  },
+  {
+    "recipe_id": 20,
+    "recipe_name": "Andhra Style Lemon Rice",
+    "ingredients": ["rice", "lemon juice", "peanuts", "chana dal", "urad dal", "mustard seeds", "green chilies", "curry leaves", "turmeric", "oil", "salt"],
+    "nutritions": {"calories": 320, "protein_g": 10, "carbs_g": 55, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Quick Meal / Tangy",
+    "health_score": 82,
+    "image_link": "https://th.bing.com/th/id/OIP.tobQ2yccZAzpuHElPIMWKAHaEK?w=317&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Cook rice and spread to cool",
+      "Roast peanuts until crunchy",
+      "Prepare tempering with dals and spices",
+      "Mix rice with tempering, peanuts, and lemon juice",
+      "Adjust salt and serve at room temperature"
+    ]
+  },
+  {
+    "recipe_id": 21,
+    "recipe_name": "Andhra Special Tamarind Rice",
+    "ingredients": ["rice", "tamarind", "peanuts", "chana dal", "urad dal", "mustard seeds", "red chilies", "curry leaves", "turmeric", "oil", "salt"],
+    "nutritions": {"calories": 340, "protein_g": 12, "carbs_g": 58, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Traditional / Tangy",
+    "health_score": 78,
+    "image_link": "https://th.bing.com/th/id/OIP.IuBaIVeVxhbQTVxAaFiOAwHaHa?w=192&h=192&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Cook rice and spread to cool",
+      "Extract tamarind pulp and cook with spices",
+      "Roast peanuts and prepare tempering",
+      "Mix rice with tamarind paste and tempering",
+      "Add peanuts and serve"
+    ]
+  },
+  {
+    "recipe_id": 22,
+    "recipe_name": "Andhra Style Coconut Rice",
+    "ingredients": ["rice", "fresh coconut", "mustard seeds", "urad dal", "chana dal", "green chilies", "curry leaves", "cashews", "oil", "salt"],
+    "nutritions": {"calories": 380, "protein_g": 10, "carbs_g": 60, "fat_g": 12},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Festive / Rich",
+    "health_score": 75,
+    "image_link": "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/coconut-rice-recipe.jpg",
+    "steps": [
+      "Cook rice and spread to cool",
+      "Grate fresh coconut",
+      "Roast cashews until golden",
+      "Prepare tempering with dals and spices",
+      "Mix rice with coconut, tempering, and cashews",
+      "Serve at room temperature"
+    ]
+  },
+  {
+    "recipe_id": 23,
+    "recipe_name": "Andhra Special Curd Rice",
+    "ingredients": ["rice", "yogurt", "milk", "ginger", "green chilies", "mustard seeds", "urad dal", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 280, "protein_g": 12, "carbs_g": 45, "fat_g": 6},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Comfort Food / Cooling",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.2lGBI2A9G1yLCNj0t1X3sAHaFj?w=245&h=184&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Cook rice until soft and mushy",
+      "Mix with yogurt and milk while rice is warm",
+      "Add grated ginger and chopped green chilies",
+      "Prepare tempering with mustard seeds and curry leaves",
+      "Mix tempering into rice mixture",
+      "Chill and serve"
+    ]
+  },
+  {
+    "recipe_id": 24,
+    "recipe_name": "Andhra Style Bisi Bele Bath",
+    "ingredients": ["rice", "toor dal", "mixed vegetables", "bisi bele bath powder", "tamarind", "jaggery", "mustard seeds", "curry leaves", "ghee", "oil", "salt"],
+    "nutritions": {"calories": 350, "protein_g": 15, "carbs_g": 55, "fat_g": 10},
+    "veg_nonveg": "Veg",
+    "diet_goal": "One-Pot Meal / Balanced",
+    "health_score": 82,
+    "image_link": "https://tse2.mm.bing.net/th/id/OIP.OKSPzPCkgSVYRJ-xHrhKvAHaHa?pid=ImgDet&w=185&h=185&c=7&dpr=1.3&o=7&rm=3",
+    "steps": [
+      "Pressure cook rice and dal with vegetables",
+      "Extract tamarind pulp and cook with spices",
+      "Mix everything together and simmer",
+      "Add jaggery for balanced taste",
+      "Prepare tempering with ghee",
+      "Serve hot with papad"
+    ]
+  },
+  {
+    "recipe_id": 25,
+    "recipe_name": "Andhra Special Pongal",
+    "ingredients": ["rice", "moong dal", "pepper", "cumin", "ginger", "cashews", "ghee", "salt"],
+    "nutritions": {"calories": 320, "protein_g": 12, "carbs_g": 50, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Comfort Food / Light",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.alRcZHtpnGTtNd9E0q0RqwHaD4?w=325&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Dry roast moong dal until aromatic",
+      "Pressure cook rice and dal together",
+      "Add crushed pepper, cumin, and ginger",
+      "Temper with ghee and roasted cashews",
+      "Mix everything well and serve hot",
+      "Best served with sambar and chutney"
+    ]
+  },
+
+  {
+    "recipe_id": 26,
+    "recipe_name": "Gongura Pappu (Sorrel Leaves Dal)",
+    "ingredients": ["toor dal", "gongura (sorrel leaves)", "green chilies", "onion", "turmeric", "ghee", "mustard seeds", "cumin seeds", "red chilies (dried)", "garlic", "salt"],
+    "nutritions": {"calories": 310, "protein_g": 16, "carbs_g": 40, "fat_g": 10},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Traditional / High Fiber",
+    "health_score": 85,
+    "image_link": "https://images.unsplash.com/photo-1620942001550-93a9035e5a9c?q=80&w=2940&auto=format&fit=crop",
+    "steps": [
+      "Wash toor dal and gongura leaves.",
+      "Pressure cook the dal with gongura, sliced green chilies, chopped onion, and turmeric until soft.",
+      "Mash the dal gently and mix in salt.",
+      "Heat ghee for tempering. Add mustard seeds, cumin seeds, dried red chilies, crushed garlic, and curry leaves.",
+      "Once the tempering splutters, pour it over the cooked dal and mix well.",
+      "Serve hot with rice and a dollop of ghee."
+    ]
+  },
+  {
+    "recipe_id": 27,
+    "recipe_name": "Pesarattu (Green Moong Dal Dosa)",
+    "ingredients": ["whole green gram (pesaralu)", "rice (optional)", "ginger", "green chilies", "cumin seeds", "onion", "oil", "salt"],
+    "nutritions": {"calories": 220, "protein_g": 12, "carbs_g": 35, "fat_g": 4},
+    "veg_nonveg": "Veg",
+    "diet_goal": "High Protein Breakfast",
+    "health_score": 90,
+    "image_link": "https://th.bing.com/th/id/OIP.GvDAgu5sn2aqwCFo6AOz8QHaLH?w=182&h=273&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Soak green gram (and rice, if using) for 4-6 hours.",
+      "Grind the soaked dal with ginger, green chilies, cumin, and salt into a smooth batter.",
+      "Heat a non-stick tawa and pour a ladleful of batter, spreading it quickly into a thin circle.",
+      "Drizzle oil around the edges. Sprinkle finely chopped onion on top (optional).",
+      "Cook until golden brown and crispy. Fold and serve immediately.",
+      "Traditionally served with Allam Pachadi (Ginger Chutney)."
+    ]
+  },
+  {
+    "recipe_id": 28,
+    "recipe_name": "Gutti Vankaya Kura (Stuffed Brinjal Curry)",
+    "ingredients": ["small brinjals (eggplant)", "peanuts", "sesame seeds", "coconut powder", "red chili powder", "coriander powder", "cumin powder", "tamarind pulp", "oil", "salt"],
+    "nutritions": {"calories": 380, "protein_g": 12, "carbs_g": 30, "fat_g": 25},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Traditional / Side Dish",
+    "health_score": 75,
+    "image_link": "https://th.bing.com/th/id/OIP.cXXuQb5VDUWPNOBHpm-DUgHaFJ?w=259&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Slit the brinjals into a cross shape, keeping the stem intact, and soak in salted water.",
+      "Dry roast peanuts and sesame seeds. Grind them with coconut, spices, salt, and tamarind to form a paste.",
+      "Stuff the brinjals with the paste.",
+      "In a deep pan, heat oil and gently place the stuffed brinjals.",
+      "Cover and cook on low heat, turning occasionally, until the brinjals are tender and the gravy is thick.",
+      "Serve hot with rotis or rice."
+    ]
+  },
+  {
+    "recipe_id": 29,
+    "recipe_name": "Andhra Chicken Curry (Kodi Kura)",
+    "ingredients": ["chicken (bone-in)", "onion", "tomato", "ginger-garlic paste", "chili powder", "coriander powder", "garam masala", "turmeric", "oil", "curry leaves", "cilantro", "salt"],
+    "nutritions": {"calories": 400, "protein_g": 40, "carbs_g": 10, "fat_g": 20},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Spicy / High Protein",
+    "health_score": 70,
+    "image_link": "https://th.bing.com/th/id/OIP.5jSQKZHdArIzeZEK5mzH4wHaLH?w=126&h=190&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Marinate chicken with a pinch of turmeric and salt.",
+      "Heat oil in a pan, add chopped onion and sauté until golden. Add curry leaves.",
+      "Stir in ginger-garlic paste and cook until the raw smell is gone.",
+      "Add chopped tomatoes and cook until soft and mushy.",
+      "Stir in chili, coriander, and garam masala powders. Cook for 2 minutes.",
+      "Add the marinated chicken and mix well. Cook until the chicken is half-done.",
+      "Pour in 1 cup of water, cover, and simmer for 15-20 minutes until the chicken is tender and the curry is thick.",
+      "Garnish with fresh cilantro and serve with rice or roti."
+    ]
+  },
+  {
+    "recipe_id": 30,
+    "recipe_name": "Dibba Rotti (Andhra Minapa Rotti)",
+    "ingredients": ["urad dal (minapa pappu)", "idli rava (rice semolina)", "ginger", "green chilies", "cumin seeds", "oil/ghee", "salt"],
+    "nutritions": {"calories": 280, "protein_g": 10, "carbs_g": 40, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Traditional Breakfast / Snack",
+    "health_score": 80,
+    "image_link": "https://th.bing.com/th/id/OIP.UdO57dDx3Si20fftxSA3agHaE8?w=261&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Soak urad dal overnight. Grind it into a thick, fluffy batter (like for idli).",
+      "Soak idli rava separately for 10 minutes and squeeze out excess water. Mix it into the urad dal batter.",
+      "Add finely chopped ginger, green chilies, cumin seeds, and salt to the batter. Mix well.",
+      "Heat a deep, heavy-bottomed pan (like a cast iron skillet) and generously grease it with oil/ghee.",
+      "Pour the batter into the pan (about 1.5 inches thick).",
+      "Cover and cook on very low heat for 20-25 minutes until the bottom is golden brown and crisp.",
+      "Flip the rotti and cook the other side (covered or uncovered) until completely cooked through and golden.",
+      "Cut into wedges and serve with a chutney or sambar."
+    ]
+  },
+  {
+    "recipe_id": 31,
+    "recipe_name": "Tamarind Rice (Chintapandu Pulihora)",
+    "ingredients": ["rice", "tamarind pulp", "peanuts", "chana dal", "urad dal", "mustard seeds", "red chilies (dried)", "curry leaves", "turmeric", "sesame oil", "salt"],
+    "nutritions": {"calories": 350, "protein_g": 8, "carbs_g": 55, "fat_g": 12},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Festive / Traditional",
+    "health_score": 75,
+    "image_link": "https://th.bing.com/th/id/OIP.sUixntasB6wrJVR8Kw1AXgHaE8?w=294&h=196&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Cook rice and let it cool completely, spreading it out to prevent stickiness.",
+      "Mix the thick tamarind pulp with turmeric and salt in a bowl.",
+      "Heat sesame oil in a large pan. Add peanuts and fry until golden. Remove and set aside.",
+      "In the same oil, add chana dal, urad dal, mustard seeds, dried red chilies, and curry leaves for tempering.",
+      "Once the seeds splutter, add the tamarind-turmeric mixture to the pan. Cook until the raw smell of tamarind is gone and the mixture thickens.",
+      "Mix the cooked tamarind paste and fried peanuts into the cooled rice gently, ensuring the rice is coated evenly without mashing.",
+      "Serve at room temperature."
+    ]
+  },
+  {
+    "recipe_id": 32,
+    "recipe_name": "Tomato Pappu (Andhra Tomato Dal)",
+    "ingredients": ["toor dal", "tomatoes", "green chilies", "onion", "turmeric", "ghee", "mustard seeds", "cumin seeds", "red chilies (dried)", "garlic", "salt", "cilantro"],
+    "nutritions": {"calories": 290, "protein_g": 14, "carbs_g": 40, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Daily Staple / Balanced",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.A3fE4yjurbNdc8amkjOBOgHaLG?w=115&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Wash toor dal. Pressure cook the dal with chopped tomatoes, green chilies, chopped onion, and turmeric until soft.",
+      "Mash the dal gently and mix in salt.",
+      "Heat ghee for tempering. Add mustard seeds, cumin seeds, dried red chilies, crushed garlic, and curry leaves.",
+      "Once the tempering splutters, pour it over the cooked dal and mix well.",
+      "Garnish with chopped cilantro and serve with rice or roti."
+    ]
+  },
+  {
+    "recipe_id": 33,
+    "recipe_name": "Aloo Vepudu (Andhra Potato Fry)",
+    "ingredients": ["potatoes", "oil", "mustard seeds", "urad dal", "chana dal", "curry leaves", "red chili powder", "turmeric", "garlic powder (optional)", "salt"],
+    "nutritions": {"calories": 300, "protein_g": 5, "carbs_g": 45, "fat_g": 12},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Side Dish / Quick Meal",
+    "health_score": 70,
+    "image_link": "https://th.bing.com/th/id/OIP.Ygn_jIF4v15xceGhrKgfNAHaE8?w=279&h=186&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Peel and chop potatoes into small, even cubes. Boil or steam them until about 80% cooked.",
+      "Heat oil in a wide pan/kadai. Add mustard seeds, urad dal, chana dal, and curry leaves for tempering.",
+      "Add the par-boiled potato cubes to the pan and fry on medium-high heat until they start to brown and crisp.",
+      "Stir in turmeric, red chili powder, garlic powder (if using), and salt. Mix well to coat the potatoes.",
+      "Continue to fry for another 5-7 minutes until the potatoes are fully cooked and crispy.",
+      "Serve as a spicy, crispy side dish for dal and rice."
+    ]
+  },
+  {
+    "recipe_id": 34,
+    "recipe_name": "Coconut Chutney (Kobbari Pachadi)",
+    "ingredients": ["fresh grated coconut", "chana dal (roasted)", "ginger", "green chilies", "tamarind pulp", "salt", "oil", "mustard seeds", "urad dal", "curry leaves"],
+    "nutritions": {"calories": 180, "protein_g": 5, "carbs_g": 15, "fat_g": 12},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Accompaniment / Quick",
+    "health_score": 85,
+    "image_link": "https://th.bing.com/th/id/OIP.yh6Ujc-IswE-rU7kb4PfMwHaE7?w=241&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Combine grated coconut, roasted chana dal, ginger, green chilies, tamarind, and salt in a blender.",
+      "Add a little water and blend to a smooth, thick consistency.",
+      "Heat a small pan with oil for tempering. Add mustard seeds, urad dal, and curry leaves.",
+      "Once the tempering splutters, pour it over the chutney and mix gently.",
+      "Serve as a classic accompaniment to idli, dosa, or pesarattu."
+    ]
+  },
+  {
+    "recipe_id": 35,
+    "recipe_name": "Lemon Rice (Nimmakaya Pulihora)",
+    "ingredients": ["rice", "lemon juice", "peanuts", "chana dal", "urad dal", "mustard seeds", "green chilies", "curry leaves", "turmeric", "oil", "salt"],
+    "nutritions": {"calories": 300, "protein_g": 7, "carbs_g": 50, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Quick Meal / Refreshing",
+    "health_score": 80,
+    "image_link": "https://tse2.mm.bing.net/th/id/OIP.swtdKVF0vUHqxs0MDqBt4wHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "steps": [
+      "Cook rice and let it cool completely, spreading it out to prevent stickiness.",
+      "Heat oil in a pan. Fry peanuts until golden. Remove and set aside.",
+      "In the same oil, add chana dal, urad dal, mustard seeds, and sliced green chilies for tempering.",
+      "Once the seeds splutter, add curry leaves and a pinch of asafoetida (hing, optional).",
+      "Stir in turmeric powder.",
+      "Mix the cooled rice with salt, lemon juice, the tempering mixture, and fried peanuts. Mix gently.",
+      "Serve at room temperature."
+    ]
+  },
+  {
+    "recipe_id": 36,
+    "recipe_name": "Punugulu (Rice & Urad Dal Fritters)",
+    "ingredients": ["idli/dosa batter", "rice flour (optional)", "onion", "ginger", "green chilies", "cumin seeds", "oil (for frying)", "salt"],
+    "nutritions": {"calories": 250, "protein_g": 7, "carbs_g": 35, "fat_g": 9},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Snack / Street Food",
+    "health_score": 65,
+    "image_link": "https://th.bing.com/th/id/OIP.7hbueaD0MNRnoIoG6bImPwHaLG?w=115&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Take the idli/dosa batter (should be thick). If too thin, add a tablespoon of rice flour.",
+      "Finely chop onion, ginger, and green chilies. Add them to the batter along with cumin seeds and salt.",
+      "Heat oil in a deep pan for frying.",
+      "Drop small spoonfuls of the batter into the hot oil.",
+      "Fry until golden brown and crispy, turning them occasionally.",
+      "Drain excess oil and serve hot with peanut or coconut chutney."
+    ]
+  },
+  {
+    "recipe_id": 37,
+    "recipe_name": "Mamidikaya Pappu (Raw Mango Dal)",
+    "ingredients": ["toor dal", "raw mango", "green chilies", "turmeric powder", "ghee", "mustard seeds", "cumin seeds", "red chilies (dried)", "curry leaves", "salt"],
+    "nutritions": {"calories": 300, "protein_g": 15, "carbs_g": 40, "fat_g": 9},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Daily Staple / Tangy",
+    "health_score": 87,
+    "image_link": "https://th.bing.com/th/id/OIP.JVSzJejwnuzruw1k0z2vBgHaGk?w=210&h=186&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Wash toor dal. Peel and chop the raw mango into small pieces.",
+      "Pressure cook the dal, mango, sliced green chilies, and turmeric powder with water until well mashed.",
+      "Mash the mixture gently and stir in salt.",
+      "Heat ghee for tempering. Add mustard seeds, cumin seeds, dried red chilies, and curry leaves.",
+      "Pour the tempering over the cooked dal and mix well.",
+      "Serve hot with rice and a dollop of ghee."
+    ]
+  },
+  {
+    "recipe_id": 38,
+    "recipe_name": "Mirapakaya Bajji (Chili Fritters)",
+    "ingredients": ["large green chilies (bajji mirchi)", "besan (chickpea flour)", "rice flour", "baking soda", "ginger-garlic paste", "carom seeds (ajwain)", "oil (for frying)", "salt"],
+    "nutritions": {"calories": 250, "protein_g": 8, "carbs_g": 30, "fat_g": 11},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Spicy Snack / Fried",
+    "health_score": 60,
+    "image_link": "https://th.bing.com/th/id/OIP.LbiAzqQ96oWoc49xbhX9vwHaE8?w=204&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Slit the chilies lengthwise and remove the seeds (optional).",
+      "Mix besan, rice flour, baking soda, ginger-garlic paste, carom seeds, and salt with water to form a thick, smooth batter.",
+      "Heat oil in a pan for deep frying.",
+      "Dip each chili in the batter to coat thoroughly.",
+      "Gently drop the battered chilies into the hot oil.",
+      "Fry until golden brown and crispy, turning them as needed.",
+      "Drain and serve hot, often stuffed with a mixture of chopped onion and lemon juice."
+    ]
+  },
+  {
+    "recipe_id": 39,
+    "recipe_name": "Sunnundalu (Urad Dal Jaggery Laddu)",
+    "ingredients": ["urad dal (whole/split)", "jaggery", "ghee (clarified butter)"],
+    "nutritions": {"calories": 150, "protein_g": 5, "carbs_g": 20, "fat_g": 7},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Traditional Sweet / High Protein",
+    "health_score": 75,
+    "image_link": "https://th.bing.com/th/id/OIP.L4gWjbtH9-L2YURU853vbgHaJZ?w=158&h=200&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Dry roast the urad dal on low heat until it turns light brown and aromatic. Let it cool completely.",
+      "Grind the cooled urad dal into a fine powder.",
+      "In a separate mixer, grind the jaggery into a fine powder.",
+      "Mix the urad dal powder and jaggery powder well in a large bowl.",
+      "Melt the ghee and gradually add it to the mixture, mixing quickly.",
+      "While the mixture is still warm, shape it tightly into small round laddus.",
+      "Store in an airtight container."
+    ]
+  },
+  {
+    "recipe_id": 40,
+    "recipe_name": "Chicken Biryani (Andhra Style)",
+    "ingredients": ["basmati rice", "chicken (bone-in)", "curd/yogurt", "ginger-garlic paste", "biryani masala", "chili powder", "turmeric", "onion", "mint", "cilantro", "oil/ghee", "saffron/food color", "salt"],
+    "nutritions": {"calories": 550, "protein_g": 40, "carbs_g": 55, "fat_g": 20},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Hearty Meal / Spicy",
+    "health_score": 65,
+    "image_link": "https://www.indianhealthyrecipes.com/wp-content/uploads/2019/02/chicken-biryani-500x375.jpg",
+    "steps": [
+      "Marinate chicken with yogurt, ginger-garlic paste, biryani masala, chili powder, turmeric, salt, mint, and cilantro for at least 2 hours.",
+      "Sauté sliced onions in oil/ghee until golden brown (for layering).",
+      "Cook basmati rice to 70% doneness and drain.",
+      "Layer the bottom of a heavy-bottomed pot with marinated chicken. Top with a layer of partially cooked rice.",
+      "Sprinkle a little fried onion, mint, and saffron milk/color over the rice.",
+      "Repeat layers until all ingredients are used, finishing with rice.",
+      "Cover the pot tightly (use dough to seal if necessary) and cook on low heat (dum) for 20-30 minutes.",
+      "Gently fluff the biryani before serving hot."
+    ]
+  },
+  {
+    "recipe_id": 41,
+    "recipe_name": "Ragi Sankati (Finger Millet Balls)",
+    "ingredients": ["ragi flour (finger millet)", "rice (optional)", "water", "salt"],
+    "nutritions": {"calories": 200, "protein_g": 6, "carbs_g": 45, "fat_g": 2},
+    "veg_nonveg": "Veg",
+    "diet_goal": "High Fiber / Traditional Staple",
+    "health_score": 92,
+    "image_link": "https://th.bing.com/th/id/OIP.9g1sh02_NzhBF1J7U2diLAHaE8?w=215&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "If using rice, cook 1/4 cup of rice with 2 cups of water until soft and mushy.",
+      "Bring the water (or rice-water mixture) to a rolling boil and add salt.",
+      "Reduce the heat to low and quickly add ragi flour in a continuous stream, stirring vigorously to prevent lumps.",
+      "Stir constantly until the mixture forms a thick, dough-like ball (it should pull away from the sides).",
+      "Cover and let it steam/cook for 5 minutes on low heat.",
+      "Wet your hands and immediately divide the mixture into golf-ball sized rounds (sankati).",
+      "Serve hot with a side of spicy curry or dal (pappu)."
+    ]
+  },
+  {
+    "recipe_id": 42,
+    "recipe_name": "Bendakaya Fry (Okra Stir Fry)",
+    "ingredients": ["okra (lady's finger)", "onion", "oil", "mustard seeds", "cumin seeds", "curry leaves", "ginger-garlic paste", "chili powder", "coriander powder", "salt"],
+    "nutritions": {"calories": 250, "protein_g": 5, "carbs_g": 30, "fat_g": 12},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Side Dish / Quick Meal",
+    "health_score": 80,
+    "image_link": "https://th.bing.com/th/id/OIP.joTuLH-gAn-OjCsEUqrPMAHaE7?w=242&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Wash and thoroughly dry the okra. Chop into small rounds.",
+      "Heat oil in a wide pan. Add mustard seeds, cumin seeds, and curry leaves.",
+      "Add chopped onion and sauté until translucent.",
+      "Add the chopped okra and stir-fry on medium-high heat. Do not cover, as this creates sliminess.",
+      "Stir-fry for 10-15 minutes until the okra is dry and slightly crispy.",
+      "Add ginger-garlic paste, chili powder, coriander powder, and salt. Mix well.",
+      "Continue to fry for another 3-5 minutes until the spices are roasted and the okra is fully cooked.",
+      "Serve hot as a side dish."
+    ]
+  },
+  {
+    "recipe_id": 43,
+    "recipe_name": "Rasam (Chaaru)",
+    "ingredients": ["tamarind pulp", "tomatoes", "rasam powder", "turmeric", "ghee", "mustard seeds", "cumin seeds", "asafoetida (hing)", "curry leaves", "cilantro", "salt"],
+    "nutritions": {"calories": 80, "protein_g": 3, "carbs_g": 15, "fat_g": 2},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Digestive / Light Meal",
+    "health_score": 90,
+    "image_link": "https://th.bing.com/th/id/OIP.ac_e2s0U6taUKDyGF5mcfQHaLG?w=125&h=188&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Mix tamarind pulp, chopped tomatoes, rasam powder, turmeric, and salt with 3 cups of water in a pot.",
+      "Bring the mixture to a boil and simmer for 10-15 minutes to allow the flavors to infuse.",
+      "For tempering, heat ghee in a small pan. Add mustard seeds, cumin seeds, and asafoetida.",
+      "Add curry leaves and a dry red chili (optional).",
+      "Pour the tempering over the simmering rasam. Stir well.",
+      "Garnish with chopped cilantro and serve hot with rice."
+    ]
+  },
+  {
+    "recipe_id": 44,
+    "recipe_name": "Bobbatlu (Poli/Puran Poli)",
+    "ingredients": ["chana dal (bengal gram)", "jaggery", "cardamom powder", "maida (all-purpose flour) or wheat flour", "ghee", "turmeric (for color)", "oil/ghee (for cooking)"],
+    "nutritions": {"calories": 350, "protein_g": 10, "carbs_g": 50, "fat_g": 12},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Traditional Sweet / Festive",
+    "health_score": 60,
+    "image_link": "https://th.bing.com/th/id/OIP._392ZdhnnHvsGufKWsC-OwHaE7?w=269&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Cook chana dal until soft but not mushy. Drain excess water.",
+      "Melt jaggery with a little water. Mix the cooked dal into the jaggery and cook until it forms a thick, dry mixture (puran). Add cardamom powder and mash well.",
+      "Knead the flour with a pinch of turmeric, a little oil, and water into a smooth, elastic dough.",
+      "Take a small ball of dough and flatten it. Place a small ball of the puran mixture inside and seal the edges.",
+      "Roll out gently into a thin circle (bobbattu).",
+      "Cook on a hot tawa with ghee on both sides until golden brown spots appear.",
+      "Serve warm with ghee or milk."
+    ]
+  },
+  {
+    "recipe_id": 45,
+    "recipe_name": "Chicken Liver Fry",
+    "ingredients": ["chicken liver", "onion", "ginger-garlic paste", "chili powder", "coriander powder", "garam masala", "turmeric", "oil", "curry leaves", "cilantro", "salt"],
+    "nutritions": {"calories": 300, "protein_g": 35, "carbs_g": 5, "fat_g": 15},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "High Protein / Side Dish",
+    "health_score": 75,
+    "image_link": "https://th.bing.com/th/id/OIP.IDyjRcM05vvuI1BbKhfIWQHaEK?w=308&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Wash chicken liver pieces thoroughly and set aside.",
+      "Heat oil in a pan, add chopped onion and sauté until golden. Add curry leaves.",
+      "Stir in ginger-garlic paste and cook until the raw smell is gone.",
+      "Add turmeric, chili powder, coriander powder, garam masala, and salt. Cook for 2 minutes.",
+      "Add the chicken liver pieces. Stir well to coat with spices.",
+      "Cover and cook on medium-low heat for 10-12 minutes, stirring occasionally, until the liver is cooked through and the fry is dry.",
+      "Garnish with fresh cilantro and serve hot with rice or roti."
+    ]
+  },
+  {
+    "recipe_id": 46,
+    "recipe_name": "Masala Vada (Paruppu Vada)",
+    "ingredients": ["chana dal (bengal gram)", "onion", "ginger", "green chilies", "fennel seeds", "cilantro", "oil (for frying)", "salt"],
+    "nutritions": {"calories": 200, "protein_g": 8, "carbs_g": 20, "fat_g": 10},
+    "veg_nonveg": "Veg",
+    "diet_goal": "High Protein Snack / Fried",
+    "health_score": 68,
+    "image_link": "https://tse3.mm.bing.net/th/id/OIP.oHnOXgInJahjmbkdlAgBXQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "steps": [
+      "Soak chana dal for 3-4 hours. Drain completely.",
+      "Grind the dal to a coarse paste, reserving 2 tablespoons of whole dal.",
+      "Mix the ground dal with whole dal, chopped onion, ginger, green chilies, fennel seeds, chopped cilantro, and salt.",
+      "Heat oil in a deep pan for frying.",
+      "Shape the mixture into small, flat patties (vadas).",
+      "Gently drop the vadas into the hot oil.",
+      "Fry until golden brown and crispy, turning them occasionally.",
+      "Drain excess oil and serve hot with coconut chutney."
+    ]
+  },
+  {
+    "recipe_id": 47,
+    "recipe_name": "Aratikaya Fry (Raw Banana Fry)",
+    "ingredients": ["raw banana (plantain)", "oil", "mustard seeds", "urad dal", "chana dal", "curry leaves", "ginger-garlic paste", "chili powder", "coriander powder", "salt"],
+    "nutritions": {"calories": 280, "protein_g": 5, "carbs_g": 40, "fat_g": 10},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Side Dish / Traditional",
+    "health_score": 75,
+    "image_link": "https://www.itslife.in/wp-content/gallery/recipe-side-dishes/recipes-sd-balekayi-fry-5.jpg",
+    "steps": [
+      "Peel the raw banana and chop into small, even cubes or slices.",
+      "Blanch the pieces in boiling water with a pinch of salt and turmeric for 5 minutes. Drain immediately.",
+      "Heat oil in a wide pan/kadai. Add mustard seeds, urad dal, chana dal, and curry leaves for tempering.",
+      "Add the blanched banana pieces and fry on medium-high heat until they start to brown and crisp.",
+      "Stir in ginger-garlic paste, chili powder, coriander powder, and salt. Mix well to coat the pieces.",
+      "Continue to fry for another 5-7 minutes until the pieces are fully cooked and crispy.",
+      "Serve as a spicy side dish for sambar or rasam."
+    ]
+  },
+  {
+    "recipe_id": 48,
+    "recipe_name": "Ulavacharu (Horse Gram Soup)",
+    "ingredients": ["horse gram (ulavalu)", "tamarind pulp", "chili powder", "onion", "ghee", "mustard seeds", "cumin seeds", "red chilies (dried)", "curry leaves", "salt"],
+    "nutritions": {"calories": 150, "protein_g": 10, "carbs_g": 20, "fat_g": 5},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Traditional / High Protein",
+    "health_score": 88,
+    "image_link": "https://th.bing.com/th/id/OIP.aqqyuijw1D1jyWbWHJ2RHgHaGA?w=205&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Soak horse gram overnight. Pressure cook it with plenty of water until very soft.",
+      "Strain the broth (this is the 'charu' base) and reserve the cooked gram for other use.",
+      "Mix the broth with tamarind pulp, chili powder, and salt. Bring to a boil and simmer for 15 minutes.",
+      "For tempering, heat ghee. Add mustard seeds, cumin seeds, chopped onion, dried red chilies, and curry leaves.",
+      "Pour the tempering into the simmering broth. Simmer for 5 more minutes.",
+      "Serve hot, often mixed with rice or as a soup, sometimes with a dollop of fresh cream (jambalaya/malaie)."
+    ]
+  },
+  {
+    "recipe_id": 49,
+    "recipe_name": "Chicken Fry (Kodi Vepudu)",
+    "ingredients": ["chicken pieces (small)", "ginger-garlic paste", "chili powder", "coriander powder", "cumin powder", "garam masala", "curry leaves", "oil", "salt"],
+    "nutritions": {"calories": 350, "protein_g": 40, "carbs_g": 5, "fat_g": 20},
+    "veg_nonveg": "Non-Veg",
+    "diet_goal": "Spicy / High Protein",
+    "health_score": 70,
+    "image_link": "https://th.bing.com/th/id/OIP.sog8Kgcr5T00eBPMkMR9uwHaE6?w=268&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Marinate chicken with ginger-garlic paste, chili powder, coriander powder, cumin powder, garam masala, and salt for at least 30 minutes.",
+      "Heat oil in a wide, heavy-bottomed pan.",
+      "Add curry leaves and let them splutter.",
+      "Add the marinated chicken and cook on medium-high heat, stirring frequently.",
+      "Cover and cook for 15-20 minutes until the chicken is tender and all the moisture has evaporated.",
+      "Continue to fry until the chicken is dry, crispy, and dark brown. Stir occasionally to prevent burning.",
+      "Serve hot as a dry side dish with biryani or rice."
+    ]
+  },
+  {
+    "recipe_id": 50,
+    "recipe_name": "Semiya Payasam (Vermicelli Kheer)",
+    "ingredients": ["vermicelli (semiya)", "milk", "sugar", "ghee", "cardamom powder", "cashews", "raisins"],
+    "nutritions": {"calories": 280, "protein_g": 8, "carbs_g": 45, "fat_g": 8},
+    "veg_nonveg": "Veg",
+    "diet_goal": "Dessert / Festive Sweet",
+    "health_score": 60,
+    "image_link": "https://th.bing.com/th/id/OIP.zwohwuKuMWFLKA9hQirHAgHaE6?w=337&h=183&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    "steps": [
+      "Heat a teaspoon of ghee in a pan. Fry cashews and raisins until golden. Set aside.",
+      "In the same pan, add vermicelli and fry until light brown. Set aside.",
+      "Boil milk in a heavy-bottomed pot. Add the roasted vermicelli and cook until soft (about 5-7 minutes).",
+      "Stir in sugar and cardamom powder. Simmer until the sugar dissolves.",
+      "Turn off the heat and stir in the fried cashews and raisins.",
+      "Serve warm or chilled."
+    ]
+
+ }
+]
