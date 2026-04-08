@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Recommendation System - Discover Healthy Recipes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* --- NEW THEME: WARM AMBER & DEEP BURGUNDY --- */
+    :root {
+      --primary-color: #7B2C3F; /* Deep Burgundy */
+      --accent-color: #FF9E1F; /* Warm Amber/Orange */
+      --light-bg: #f8f9fa; /* Light Gray for body */
+    }
+
+    body { 
+      background-color: var(--light-bg); 
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-color), #9D3B55) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(rgba(123, 44, 63, 0.85), rgba(157, 59, 85, 0.85)), 
+                  url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0;
+      color: white;
+      text-align: center;
+    }
+    .hero-section h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .hero-section .lead {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #E58E1B;
+      border-color: #E58E1B;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Sections */
+    .section-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+      border-top: 4px solid var(--accent-color);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    /* How It Works Section */
+    .steps-section {
+      background-color: white;
+    }
+    .step-item {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid var(--accent-color);
+      transition: transform 0.3s;
+    }
+    .step-item:hover {
+      transform: translateX(5px);
+    }
+    .step-number {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+
+    /* Auth Modal */
+    .modal-header-custom {
+      background: linear-gradient(135deg, var(--primary-color), #9D3B55) !important;
+      color: white;
+    }
+    .nav-tabs .nav-link {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    .btn-auth {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+      font-weight: 600;
+    }
+    .btn-auth:hover {
+      background-color: #E58E1B;
+      border-color: #E58E1B;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 70px 0;
+      }
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  
+</head>
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-utensils me-2"></i>Recipe Recommendation System  
+      </a>
+      <div class="ms-auto">
+        <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#authModal">Login</button>
+        <button class="btn btn-auth" data-bs-toggle="modal" data-bs-target="#authModal">Signup</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Discover Healthy & Delicious Recipes</h1>
+      <p class="lead">Find personalized recipes based on ingredients you already have and your health goals.</p>
+      <a href="/dashboard" class="btn btn-primary btn-lg">
+        <i class="fas fa-utensils me-2"></i>Get Started
+      </a>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center section-title">🌟 Why Choose Recipe Recommendation System?</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h5>Smart Ingredient Search</h5>
+            <p>Enter ingredients you have at home and get instant recipe suggestions tailored to your pantry.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <h5>Health Focused</h5>
+            <p>Recipes sorted by nutrition data and health scores to match your specific diet goals and preferences.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-user-cog"></i>
+            </div>
+            <h5>Personalized Experience</h5>
+            <p>Set your dietary preferences, track your eating history, and get recommendations based on your profile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 steps-section">
+    <div class="container">
+      <h2 class="text-center section-title">⚙️ How It Works</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="step-item">
+            <div class="d-flex align-items-center mb-2">
+              <span class="step-number">1</span>
+              <h5 class="mb-0" style="color: var(--primary-color);">Create Your Profile</h5>
+            </div>
+            <p class="mb-0">Sign up and set your dietary preferences, health goals, and any allergies or ingredients to avoid.</p>
+          </div>
+          
+          <div class="step-item">
+            <div class="d-flex align-items-center mb-2">
+              <span class="step-number">2</span>
+              <h5 class="mb-0" style="color: var(--primary-color);">Search with Ingredients</h5>
+            </div>
+            <p class="mb-0">Enter the ingredients available in your kitchen. Our smart algorithm finds the perfect recipes for you.</p>
+          </div>
+          
+          <div class="step-item">
+            <div class="d-flex align-items-center mb-2">
+              <span class="step-number">3</span>
+              <h5 class="mb-0" style="color: var(--primary-color);">Get Personalized Recommendations</h5>
+            </div>
+            <p class="mb-0">Receive recipe suggestions that match your dietary needs, health goals, and available ingredients.</p>
+          </div>
+          
+          <div class="step-item">
+            <div class="d-flex align-items-center mb-2">
+              <span class="step-number">4</span>
+              <h5 class="mb-0" style="color: var(--primary-color);">Cook & Track Your Progress</h5>
+            </div>
+            <p class="mb-0">Follow step-by-step instructions, mark recipes as eaten, and track your nutrition over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 text-center" style="background-color: rgba(123, 44, 63, 0.05);">
+    <div class="container">
+      <h2 class="mb-4" style="color: var(--primary-color);">Ready to Transform Your Cooking?</h2>
+      <p class="lead mb-4">Join thousands of users who are eating healthier with personalized recipe recommendations.</p>
+      <a href="/dashboard" class="btn btn-primary btn-lg me-3">
+        <i class="fas fa-utensils me-2"></i>Explore Recipes
+      </a>
+      <button class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#authModal">
+        <i class="fas fa-user-plus me-2"></i>Create Account
+      </button>
+    </div>
+  </section>
+
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-0">&copy; 2023 Recipe Recommendation System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="authModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title">Join Recipe Recommendation System</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+
+          <ul class="nav nav-tabs mb-4" id="authTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button">Signup</button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="login">
+              <form action="/login" method="POST">
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-auth w-100">Login</button>
+              </form>
+            </div>
+
+            <div class="tab-pane fade" id="signup">
+              <form action="/signup" method="POST">
+                <div class="mb-3">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" name="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="btn btn-auth w-100">Create Account</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+

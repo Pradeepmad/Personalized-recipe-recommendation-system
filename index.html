@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Recommendation Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- NEW THEME: WARM AMBER & DEEP BURGUNDY --- */
+        :root {
+            --primary-color: #7B2C3F; /* Deep Burgundy */
+            --accent-color: #FF9E1F; /* Warm Amber/Orange */
+            --light-bg: #f8f9fa; /* Light Gray for body */
+        }
+
+        /* General Styles */
+        body { 
+            background-color: var(--light-bg); 
+            font-family: 'Inter', sans-serif; 
+        }
+
+        /* Navbar */
+        .navbar { 
+            background-color: #ffffff; 
+            box-shadow: 0 2px 4px rgba(0,0,0,.05); 
+        }
+        .text-primary { 
+            color: var(--primary-color) !important; 
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), 
+                        linear-gradient(135deg, var(--primary-color), #9D3B55);
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        .hero-section .display-4, .hero-section .lead {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Search Bar */
+        .search-container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 50px;
+            padding: 5px 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .search-icon { 
+            color: var(--primary-color); 
+            margin: 0 10px; 
+        }
+        .search-input { 
+            border: none; 
+            box-shadow: none; 
+            padding: 10px 5px; 
+        }
+        .search-input:focus { 
+            box-shadow: none; 
+        }
+        .search-btn {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        .search-btn:hover { 
+            background-color: #E58E1B; 
+            border-color: #E58E1B; 
+        }
+
+        /* Recipe Cards & Modals */
+        .recipe-card {
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .recipe-img { 
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .badge-custom { 
+            background-color: var(--primary-color); 
+            color: white; 
+            padding: 3px 8px; 
+            margin-right: 5px; 
+            border-radius: 5px; 
+            font-size: 0.8rem; 
+        }
+        .badge-accent {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 3px 8px;
+            margin-right: 5px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+        .health-score { 
+            font-weight: bold; 
+            color: #198754; 
+        }
+        .view-details-btn {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .view-details-btn:hover {
+            background-color: #6a2536;
+            border-color: #6a2536;
+        }
+        .modal-image { 
+            width: 100%; 
+            height: 300px; 
+            object-fit: cover; 
+            margin-bottom: 15px; 
+            border-radius: 5px; 
+        }
+        .steps-list { 
+            padding-left: 20px; 
+        }
+
+        /* Star Rating in Modal */
+        .rating-stars { 
+            font-size: 2rem; 
+            color: #ccc; 
+            cursor: pointer; 
+        }
+        .rating-stars .star { 
+            transition: color 0.1s; 
+        }
+        .rating-stars .star.selected {
+            color: gold;
+        }
+
+        /* Message Box */
+        .message-box {
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.05);
+        }
+
+        /* Modal Headers */
+        .modal-header-custom {
+            background: linear-gradient(135deg, var(--primary-color), #9D3B55) !important;
+            color: white;
+        }
+
+        /* Buttons */
+        .btn-eaten {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        .btn-eaten:hover {
+            background-color: #E58E1B;
+            border-color: #E58E1B;
+        }
+
+        /* Print Button */
+        .btn-print {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        .btn-print:hover {
+            background-color: #6a2536;
+            border-color: #6a2536;
+        }
+
+        /* Section Headers */
+        .section-header {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-dark" href="/dashboard">
+            <i class="fas fa-utensils me-2" style="color: var(--accent-color);"></i>Recipe Recommendation System
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if session.user %}
+                    <li class="nav-item">
+                        <span class="nav-link text-success fw-bold">Welcome, {{ session.user.name }}!</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">
+                            <i class="fas fa-user me-1" style="color: var(--primary-color);"></i>Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <i class="fas fa-sign-out-alt me-1" style="color: var(--primary-color);"></i>Logout
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section and Search Bar -->
+<div class="hero-section">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Discover Your Perfect Recipe</h1>
+        <p class="lead mb-5">Find delicious recipes based on your ingredients, diet preferences, and nutrition goals</p>
+        <form method="POST" action="/recommend" class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" name="query" class="form-control search-input" placeholder="e.g., chicken, broccoli, rice" aria-label="Search ingredients">
+                <button type="submit" class="btn search-btn">
+                    <span class="d-none d-sm-inline">Search Recipes</span>
+                    <span class="d-inline d-sm-none"><i class="fas fa-arrow-right"></i></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Main Content Area (Messages & Recipes) -->
+<div class="container py-5">
+    <div id="message-area">
+    {% if message %}
+        <div class="alert message-box text-center {% if '✅' in message %}alert-success{% elif '❌' in message %}alert-danger{% else %}alert-info{% endif %}" role="alert">
+            {{ message | safe }}
+        </div>
+    {% endif %}
+    </div>
+    
+    <h2 class="text-center mb-5 mt-4 section-header">
+        {% if recipes and not message %}Popular Recipes Today{% elif recipes and 'Found' in message %}Your Search Results{% elif recipes %}Recommended Recipes{% else %}Start Your Culinary Journey!{% endif %}
+    </h2>
+
+    <div class="row">
+        {% if recipes %}
+            {% for recipe in recipes %}
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4">
+                <div class="card recipe-card" data-bs-toggle="modal" data-bs-target="#recipeModal{{ loop.index }}">
+                    <img src="{{ recipe.image_link }}" class="card-img-top recipe-img" alt="{{ recipe.recipe_name }}"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/FF9E1F/FFFFFF?text=Recipe+Image';">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title" style="color: var(--primary-color);">{{ recipe.recipe_name }}</h5>
+
+                        <div class="mb-3">
+                            {% if recipe.diet_goal %}<span class="badge-custom">{{ recipe.diet_goal }}</span>{% endif %}
+                            {% if recipe.veg_nonveg %}<span class="badge-accent">{{ recipe.veg_nonveg }}</span>{% endif %}
+                        </div>
+
+                        <p class="card-text text-muted small mb-3 flex-grow-1">
+                            <strong>Key Ingredients:</strong>
+                            <ul class="list-unstyled mb-0">
+                                {% set allergies = user_allergies or [] %}
+                                {% for ing in recipe.ingredients[:3] %}
+                                    {% if ing.lower() in allergies %}
+                                        <li class="text-danger fw-bold"><i class="fas fa-exclamation-triangle me-1"></i>{{ ing }} ⚠️</li>
+                                    {% else %}
+                                        <li><i class="fas fa-circle me-1" style="font-size: 0.5rem; vertical-align: middle; color: var(--accent-color);"></i>{{ ing }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if recipe.ingredients|length > 3 %}
+                                    <li class="fst-italic text-secondary">...and {{ recipe.ingredients|length - 3 }} more.</li>
+                                {% endif %}
+                            </ul>
+                        </p>
+
+                        <div class="nutrition-info mt-auto pt-3 border-top">
+                            <p class="mb-1"><strong>Nutrition (per serving):</strong></p>
+                            <div class="d-flex justify-content-between small">
+                                <span>Calories: <strong>{{ recipe.nutritions.calories or 'N/A' }}</strong></span>
+                                <span>Protein: <strong>{{ recipe.nutritions.protein_g or 'N/A' }}g</strong></span>
+                            </div>
+                            <p class="health-score mt-2 mb-0">Health Score: {{ recipe.health_score or 'N/A' }}/100</p>
+                        </div>
+
+                        <button class="btn view-details-btn mt-3">
+                            <i class="fas fa-receipt me-2"></i>View Full Recipe
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe Detail Modal (for each recipe) -->
+            <div class="modal fade" id="recipeModal{{ loop.index }}" tabindex="-1" aria-labelledby="recipeModalLabel{{ loop.index }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-custom">
+                            <h5 class="modal-title" id="recipeModalLabel{{ loop.index }}">{{ recipe.recipe_name }}</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{ recipe.image_link }}" class="modal-image" alt="{{ recipe.recipe_name }}"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x300/FF9E1F/FFFFFF?text=Recipe+Image';">
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h6 class="section-header">Ingredients</h6>
+                                    <ul class="list-unstyled">
+                                        {% for ing in recipe.ingredients %}
+                                            {% if ing.lower() in allergies %}
+                                                <li style="color:red; font-weight:bold;">
+                                                    <i class="fas fa-exclamation-triangle me-1"></i>{{ ing }} (Allergy Risk)
+                                                </li>
+                                            {% else %}
+                                                <li>
+                                                    <i class="fas fa-dot-circle me-1" style="color: var(--accent-color); font-size: 0.6rem;"></i>{{ ing }}
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="section-header">Nutrition Snapshot</h6>
+                                    <p class="mb-1">Calories: <strong>{{ recipe.nutritions.calories or 'N/A' }}</strong></p>
+                                    <p class="mb-1">Protein: <strong>{{ recipe.nutritions.protein_g or 'N/A' }}g</strong></p>
+                                    <p class="mb-1">Carbs: <strong>{{ recipe.nutritions.carbs_g or 'N/A' }}g</strong></p>
+                                    <p class="mb-1">Fat: <strong>{{ recipe.nutritions.fat_g or 'N/A' }}g</strong></p>
+                                    <p class="mb-1">Diet: <span class="badge-custom">{{ recipe.diet_goal or 'Any' }}</span></p>
+                                    <p class="mb-1">Type: <span class="badge-accent">{{ recipe.veg_nonveg or 'Any' }}</span></p>
+                                    <p class="health-score mt-3"><strong>Health Score:</strong> {{ recipe.health_score or 'N/A' }}/100</p>
+                                </div>
+                            </div>
+
+                            <h6 class="section-header">Preparation Steps</h6>
+                            <ol class="steps-list">
+                                {% for step in recipe.steps %}
+                                    <li>{{ step }}</li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <div class="d-flex gap-2">
+                                <!-- Mark as Eaten Button calls JS function -->
+                                <button type="button" class="btn btn-eaten" onclick="markRecipeEaten('{{ recipe.recipe_id }}', 'recipeModal{{ loop.index }}')">
+                                    <i class="fas fa-check-circle me-2"></i>Mark as Eaten
+                                </button>
+                                <button type="button" class="btn btn-print">
+                                    <i class="fas fa-print me-2"></i>Print Recipe
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <i class="fas fa-pepper-hot fa-3x text-muted mb-3"></i>
+            <p class="lead text-muted">No recipes found. Try searching for ingredients like 'pasta', 'chicken', or 'broccoli'!</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Global Modals (Login, Signup, Review) -->
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <form action="/login" method="POST">
+                <div class="modal-header modal-header-custom">
+                    <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt me-2"></i>Login</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" name="password" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-eaten">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <form action="/signup" method="POST">
+                <div class="modal-header modal-header-custom">
+                    <h5 class="modal-title" id="signupModalLabel"><i class="fas fa-user-plus me-2"></i>Sign Up</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="signupName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="signupName" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="signupEmail" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signupPassword" name="password" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-eaten">Create Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Review Modal -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <form id="reviewForm"> 
+                <div class="modal-header modal-header-custom">
+                    <h5 class="modal-title" id="reviewModalLabel"><i class="fas fa-star me-2"></i>Rate Your Recipe!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="lead">How was your meal?</p>
+                    <div class="rating-stars mb-4">
+                        <i class="fas fa-star star" data-rating="1"></i>
+                        <i class="fas fa-star star" data-rating="2"></i>
+                        <i class="fas fa-star star" data-rating="3"></i>
+                        <i class="fas fa-star star" data-rating="4"></i>
+                        <i class="fas fa-star star" data-rating="5"></i>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reviewComment" class="form-label">Add a comment (optional)</label>
+                        <textarea class="form-control" id="reviewComment" rows="3" placeholder="Tell us what you loved or how we can improve..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-eaten" id="submitReviewBtn">
+                        <i class="fas fa-paper-plane me-2"></i>Submit Review
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ----------------------------
+// Global Variables & Setup
+// ----------------------------
+let currentRecipeId = null;
+let selectedRating = 0;
+
+// Get Bootstrap Modal instances
+const reviewModalElement = document.getElementById('reviewModal');
+const reviewModal = new bootstrap.Modal(reviewModalElement);
+
+// ----------------------------
+// Helper Function: Show Alert
+// ----------------------------
+function showAlert(message, isSuccess = true) {
+    const messageArea = document.getElementById('message-area');
+    // Determine alert type based on success status or content
+    let alertType;
+    if (isSuccess) {
+        alertType = 'alert-success';
+        message = '✅ ' + message;
+    } else {
+        alertType = 'alert-danger';
+        message = '❌ ' + message;
+    }
+    
+    // Create the alert element
+    const alertHtml = `
+        <div class="alert message-box text-center ${alertType}" role="alert">
+            ${message}
+        </div>
+    `;
+
+    // Replace the current content (clears previous messages)
+    messageArea.innerHTML = alertHtml;
+    
+    // Auto-dismiss after 5 seconds
+    setTimeout(() => {
+        const currentAlert = messageArea.querySelector('.alert');
+        if (currentAlert) {
+            currentAlert.remove();
+        }
+    }, 5000);
+}
+
+// ----------------------------
+// Mark Recipe as Eaten
+// ----------------------------
+function markRecipeEaten(recipeId, modalId) {
+    // Client-side check for login state (crucial for good UX)
+    {% if not session.user %}
+        showAlert("Please log in to mark a recipe as eaten.", false);
+        return;
+    {% endif %}
+
+    fetch(`/mark_eaten/${recipeId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => {
+        if (!res.ok) {
+            // Throw the response to catch its details in the .catch block
+            return res.json().then(err => { throw err; });
+        }
+        return res.json();
+    })
+    .then(data => {
+        if (data.success) {
+            showAlert(data.message, true);
+
+            // Close the recipe detail modal
+            const detailModalElement = document.getElementById(modalId);
+            const detailModal = bootstrap.Modal.getInstance(detailModalElement);
+            if (detailModal) {
+                detailModal.hide();
+            }
+
+            // Only open review modal if a review doesn't already exist
+            if (!data.review_exists) {
+                currentRecipeId = recipeId;
+                openReviewModal(true); // Reset and open
+            }
+        } else {
+            showAlert(data.message || "Could not mark as eaten. Please try again.", false);
+        }
+    })
+    .catch(err => {
+        console.error("Error marking recipe as eaten:", err);
+        const errorMessage = (err && err.message) ? err.message : "An error occurred while communicating with the server.";
+        showAlert(errorMessage, false);
+    });
+}
+
+// ----------------------------
+// Open Review Modal and setup stars
+// ----------------------------
+function openReviewModal(reset = true) {
+    if (reset) {
+        // Reset the modal content
+        selectedRating = 0;
+        document.getElementById('reviewComment').value = '';
+        
+        // Reset star colors
+        document.querySelectorAll('.rating-stars .star').forEach(star => {
+            star.classList.remove('selected');
+        });
+    }
+
+    // Show the modal
+    reviewModal.show();
+}
+
+// ----------------------------
+// Star Rating Logic
+// ----------------------------
+document.querySelectorAll('.rating-stars .star').forEach(star => {
+    // Click handler to select the rating
+    star.addEventListener('click', function() {
+        selectedRating = parseInt(this.getAttribute('data-rating'));
+        
+        // Update star colors
+        document.querySelectorAll('.rating-stars .star').forEach(s => {
+            const rating = parseInt(s.getAttribute('data-rating'));
+            if (rating <= selectedRating) {
+                s.classList.add('selected');
+            } else {
+                s.classList.remove('selected');
+            }
+        });
+    });
+});
+
+// ----------------------------
+// Submit Review
+// ----------------------------
+document.getElementById('reviewForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (!currentRecipeId) {
+        showAlert("Internal error: Recipe ID is missing for review.", false);
+        reviewModal.hide();
+        return;
+    }
+
+    if (selectedRating === 0) {
+        // Use custom message box instead of native alert
+        showAlert("Please select a star rating before submitting.", false);
+        return;
+    }
+
+    const comment = document.getElementById('reviewComment').value;
+    
+    fetch(`/review/${currentRecipeId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            rating: selectedRating,
+            comment: comment
+        })
+    })
+    .then(res => {
+        if (!res.ok) {
+            return res.json().then(err => { throw err; });
+        }
+        return res.json();
+    })
+    .then(data => {
+        reviewModal.hide(); // Hide review modal on success
+        if (data.success) {
+            showAlert(data.message, true);
+            // Optionally redirect or reload to update history/dashboard
+        } else {
+            showAlert(data.message || "Failed to save review. Please check server logs.", false);
+        }
+    })
+    .catch(err => {
+        console.error("Error submitting review:", err);
+        reviewModal.hide(); // Hide review modal on error
+        const errorMessage = (err && err.message) ? err.message : "Network error during review submission.";
+        showAlert(errorMessage, false);
+    });
+});
+</script>
+
+</body>
+
+</html>
+
+
+

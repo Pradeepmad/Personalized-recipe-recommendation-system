@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Recipe Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js script removed as graphs are removed -->
+    <style>
+        /* --- NEW THEME: WARM AMBER & DEEP BURGUNDY --- */
+        :root {
+            --primary-color: #7B2C3F; /* Deep Burgundy */
+            --accent-color: #FF9E1F; /* Warm Amber/Orange */
+            --light-bg: #f8f9fa; /* Light Gray for body */
+        }
+
+        body { background-color: var(--light-bg); font-family: 'Inter', sans-serif; }
+        .navbar { background-color: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,.05); }
+        .profile-container { margin-top: 30px; }
+        .sidebar { background-color: #ffffff; border-radius: 10px; padding: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+        .main-content-card { border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+        .header-primary {
+            background: linear-gradient(135deg, var(--primary-color), #9D3B55);
+            color: white;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .text-primary, .btn-primary { color: var(--primary-color) !important; }
+        .btn-primary { 
+            background-color: var(--accent-color) !important; 
+            border-color: var(--accent-color) !important; 
+            color: white !important;
+        }
+        .text-info { color: var(--accent-color) !important; }
+
+        .form-control, .form-select { border-radius: 8px; }
+        .nav-link.sidebar-link { color: #495057; }
+        .nav-link.sidebar-link:hover, .nav-link.sidebar-link.active {
+            background-color: rgba(123, 44, 63, 0.1); /* Light Burgundy hover */
+            color: var(--primary-color);
+            border-radius: 5px;
+        }
+        .detail-value { font-weight: bold; color: #343a40; }
+        .detail-label { color: #6c757d; }
+        /* Style for history items */
+        .history-item { 
+            border-left: 5px solid var(--accent-color); 
+            cursor: pointer; 
+            transition: background-color 0.2s;
+        }
+        .history-item:hover {
+            background-color: rgba(255, 158, 31, 0.05);
+        }
+        .history-img { width: 80px; height: 80px; object-fit: cover; border-radius: 5px; }
+        .ingredients-list, .steps-list { list-style: none; padding-left: 0; }
+        .ingredients-list li, .steps-list li { margin-bottom: 5px; }
+        
+        /* Progress bar custom styling */
+        .progress-bar-protein { background-color: var(--primary-color) !important; }
+        .progress-bar-calories { background-color: var(--accent-color) !important; }
+
+        /* Modal specific styling for theme consistency */
+        #detailModal .modal-header, #reviewModal .modal-header {
+             background: linear-gradient(135deg, var(--primary-color), #9D3B55) !important;
+             color: white;
+        }
+
+        /* Enhanced button styling */
+        .btn-primary:hover {
+            background-color: #E58E1B !important;
+            border-color: #E58E1B !important;
+        }
+
+        /* Card header enhancements */
+        .card-header-custom {
+            background: linear-gradient(135deg, var(--primary-color), #9D3B55);
+            color: white;
+            border-radius: 8px 8px 0 0 !important;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-dark" href="{{ url_for('dashboard') }}"><i class="fas fa-utensils me-2" style="color: var(--accent-color);"></i>Recipe Recommendation System</a>
+        <div class="collapse navbar-collapse show" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}"><i class="fas fa-home me-1"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('profile') }}"><i class="fas fa-user me-1"></i>Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt me-1"></i>Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container profile-container">
+    {% if message %}
+        <div class="alert mt-3 text-center {% if '✅' in message %}alert-success{% elif '❌' in message %}alert-danger{% else %}alert-info{% endif %}" role="alert">
+            {{ message | safe }}
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="sidebar">
+                <p class="fw-bold text-uppercase mb-3 text-secondary">Navigation</p>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    
+                    <a class="nav-link sidebar-link" href="{{ url_for('dashboard') }}" role="tab">
+                        <i class="fas fa-home me-2"></i>Home (Recipe Menu)
+                    </a>
+                    
+                    <a class="nav-link sidebar-link {% if active_tab == 'v-pills-profile' or not active_tab %}active{% endif %}" 
+                        id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true">
+                        <i class="fas fa-user-circle me-2"></i>My Details
+                    </a>
+                    
+                    <a class="nav-link sidebar-link {% if active_tab == 'v-pills-edit' %}active{% endif %}" 
+                        id="v-pills-edit-tab" data-bs-toggle="pill" data-bs-target="#v-pills-edit" type="button" role="tab" aria-controls="v-pills-edit" aria-selected="false">
+                        <i class="fas fa-edit me-2"></i>Edit Profile
+                    </a>
+                    
+                    <a class="nav-link sidebar-link {% if active_tab == 'v-pills-history' %}active{% endif %}" 
+                        id="v-pills-history-tab" type="button" role="tab" aria-controls="v-pills-history" aria-selected="false" href="{{ url_for('history') }}">
+                        <i class="fas fa-utensils me-2"></i>Eaten History
+                    </a>
+
+                    <a class="nav-link sidebar-link {% if active_tab == 'v-pills-diet-history' %}active{% endif %}" 
+                        id="v-pills-diet-history-tab" type="button" role="tab" 
+                        aria-controls="v-pills-diet-history" aria-selected="false" href="{{ url_for('profile', active_tab='v-pills-diet-history') }}">
+                        <i class="fas fa-chart-line me-2"></i>Diet History
+                    </a>
+                    
+                    <a class="nav-link sidebar-link mt-3 text-danger" href="{{ url_for('logout') }}" role="tab">
+                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                    </a>
+                </div>
+                </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="tab-content main-content-card bg-white" id="v-pills-tabContent">
+                
+                <div class="tab-pane fade {% if active_tab == 'v-pills-profile' or not active_tab %}show active{% endif %}" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="header-primary">
+                        <h3 class="mb-0"><i class="fas fa-info-circle me-2"></i>My Personal Details</h3>
+                        <p class="mb-0 small">{{ session.user.name or "User" }}, here are your current settings.</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="detail-label mb-0">Full Name</p>
+                                <p class="detail-value">{{ session.user.name or "N/A" }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="detail-label mb-0">Email</p>
+                                <p class="detail-value">{{ session.user.email or "N/A" }}</p>
+                            </div>
+                        </div>
+                        <!-- START: HEALTH METRICS BLOCK (UPDATED) -->
+                        <h5 class="mt-3 mb-3 text-primary border-bottom pb-2">Health Metrics</h5>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <p class="detail-label mb-0">Age</p>
+                                <p class="detail-value">
+                                    {% if profile.age %}{{ profile.age }} years{% else %}N/A{% endif %}
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="detail-label mb-0">Gender</p>
+                                <p class="detail-value">
+                                    {% if profile.gender %}{{ profile.gender | capitalize }}{% else %}N/A{% endif %}
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="detail-label mb-0">Height</p>
+                                <p class="detail-value">
+                                    {% if profile.height %}{{ profile.height }} cm{% else %}N/A{% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="detail-label mb-0">Weight</p>
+                                <p class="detail-value">
+                                    {% if profile.weight %}{{ profile.weight }} kg{% else %}N/A{% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- END: HEALTH METRICS BLOCK -->
+
+                        <h5 class="mt-4 mb-3 text-primary border-bottom pb-2">Diet & Preferences</h5>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="detail-label mb-0">Diet Goal</p>
+                                <p class="detail-value">
+                                    {% if profile.diet_goal == 'weight_loss' %}Weight Loss (Lower Calories)
+                                    {% elif profile.diet_goal == 'muscle_gain' %}Muscle Gain (Higher Protein)
+                                    {% elif profile.diet_goal == 'weight_gain' %}Weight Gain (Higher Calories)
+                                    {% else %}No specific goal{% endif %}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="detail-label mb-0">Diet Duration</p>
+                                <p class="detail-value">
+                                    {% if profile.duration_months %}{{ profile.duration_months }} Months{% else %}3 Months (Default){% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p class="detail-label mb-0">Food Preference</p>
+                                <p class="detail-value">{{ profile.food_pref or "Vegetarian & Non-Vegetarian" }}</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="detail-label mb-0">Allergies/Avoided Ingredients</p>
+                            <p class="detail-value">
+                                {% if profile.allergies %}{{ profile.allergies }}{% else %}None listed. Enjoy!{% endif %}
+                            </p>
+                        </div>
+
+                        <a href="#v-pills-edit" role="tab" data-bs-toggle="pill" class="btn btn-primary mt-3">
+                            <i class="fas fa-edit me-2"></i>Edit Profile
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade {% if active_tab == 'v-pills-edit' %}show active{% endif %}" id="v-pills-edit" role="tabpanel" aria-labelledby="v-pills-edit-tab">
+                    <div class="header-primary">
+                        <h3 class="mb-0"><i class="fas fa-user-edit me-2"></i>Edit Your Preferences</h3>
+                        <p class="mb-0 small">Update your personalized metrics and dietary preferences below and save your changes.</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="POST" action="{{ url_for('profile') }}">
+                            <h5 class="mt-3 mb-3 text-primary">Health & Metrics</h5>
+
+                            <!-- NEW ROW: AGE AND GENDER -->
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="number" class="form-control" id="age" name="age" value="{{ profile.age or '' }}" placeholder="e.g., 30" min="15" max="99">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-select" id="gender" name="gender">
+                                        <option value="">Select...</option>
+                                        <option value="male" {% if (profile.gender|lower) == 'male' %}selected{% endif %}>Male</option>
+                                        <option value="female" {% if (profile.gender|lower) == 'female' %}selected{% endif %}>Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- END NEW ROW -->
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="height" class="form-label">Height (cm)</label>
+                                    <input type="number" step="0.1" class="form-control" id="height" name="height" value="{{ profile.height or '' }}" placeholder="e.g., 175">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="weight" class="form-label">Weight (kg)</label>
+                                    <input type="number" step="0.1" class="form-control" id="weight" name="weight" value="{{ profile.weight or '' }}" placeholder="e.g., 70">
+                                </div>
+                            </div>
+
+                            <h5 class="mt-4 mb-3 text-primary">Dietary Preferences</h5>
+
+                            <!-- NEW ROW: DIET DURATION -->
+                            <div class="mb-3">
+                                <label for="duration_months" class="form-label">Diet Plan Duration (Months)</label>
+                                <select class="form-select" id="duration_months" name="duration_months">
+                                    <option value="1" {% if profile.duration_months == 1 %}selected{% endif %}>1 Month</option>
+                                    <option value="3" {% if profile.duration_months == 3 or not profile.duration_months %}selected{% endif %}>3 Months (Recommended)</option>
+                                    <option value="6" {% if profile.duration_months == 6 %}selected{% endif %}>6 Months</option>
+                                </select>
+                            </div>
+                            <!-- END NEW ROW -->
+
+                            <div class="mb-3">
+                                <label for="food_pref" class="form-label">Food Preference</label>
+                                <select class="form-select" id="food_pref" name="food_pref">
+                                    <option value="both" {% if (profile.food_pref|lower) == 'both' or not profile.food_pref %}selected{% endif %}>Vegetarian & Non-Vegetarian</option>
+                                    <option value="veg" {% if (profile.food_pref|lower) == 'veg' %}selected{% endif %}>Vegetarian Only</option>
+                                    <option value="non-veg" {% if (profile.food_pref|lower) == 'non-veg' %}selected{% endif %}>Non-Vegetarian Only</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="diet_goal" class="form-label">Diet Goal</label>
+                                <select class="form-select" id="diet_goal" name="diet_goal">
+                                    <option value="">No specific goal</option>
+                                    <option value="weight_loss" {% if (profile.diet_goal|lower) == 'weight_loss' %}selected{% endif %}>Weight Loss (Lower Calories)</option>
+                                    <option value="muscle_gain" {% if (profile.diet_goal|lower) == 'muscle_gain' %}selected{% endif %}>Muscle Gain (Higher Protein)</option>
+                                    <option value="weight_gain" {% if (profile.diet_goal|lower) == 'weight_gain' %}selected{% endif %}>Weight Gain (Higher Calories)</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="allergies" class="form-label">Allergies/Avoided Ingredients</label>
+                                <textarea class="form-control" id="allergies" name="allergies" rows="3" placeholder="e.g., milk, peanuts, gluten, eggs">{{ profile.allergies or '' }}</textarea>
+                                <div class="form-text">Enter ingredients you are allergic to or want to avoid, separated by commas.</div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-save me-2"></i>Save Preferences
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade {% if active_tab == 'v-pills-history' %}show active{% endif %}" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">
+                    <div class="header-primary">
+                        <h3 class="mb-0"><i class="fas fa-utensils me-2"></i>Eaten History</h3>
+                        <p class="mb-0 small">Recipes you've marked as eaten, ordered by most recent.</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="alert alert-info py-2 small mb-4">
+                            <strong>Current User ID (Session/Users.objectId):</strong> 
+                            <span class="text-break">{{ session.user.objectId or 'Not Logged In' }}</span>
+                            <br>
+                            *This ID must match the `user_id` column in CookedRecipes for records to appear.
+                        </div>
+
+                        {% if cooked_recipes %}
+                            {% for recipe in cooked_recipes %}
+                            {% set recipe_json = recipe | tojson %} 
+                            
+                            <div class="card mb-3 history-item" 
+                                onclick="openDetailsModal(JSON.parse(this.dataset.recipe))" 
+                                data-recipe='{{ recipe_json }}'>
+                                
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-2">
+                                        <img src="{{ recipe.image_link }}" class="history-img" alt="{{ recipe.recipe_name }}"
+                                             onerror="this.onerror=null;this.src='https://placehold.co/80x80/FF9E1F/FFFFFF?text=Recipe';">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body py-2">
+                                            <h6 class="card-title mb-1 fw-bold">{{ recipe.recipe_name }}</h6>
+                                            <p class="card-text small mb-1">
+                                                <i class="fas fa-calendar-alt me-1 text-muted"></i> Cooked on: 
+                                                <span class="fw-bold">{{ recipe.date_cooked[:10] if recipe.date_cooked else 'N/A' }}</span>
+                                            </p>
+                                            
+                                            <div class="d-flex align-items-center mt-2">
+                                                {% if recipe.review %}
+                                                    {% set rating = recipe.review.rating %}
+                                                    <span class="text-success fw-bold me-2"><i class="fas fa-star me-1"></i>Rated: {{ rating }}/5</span>
+                                                    <span class="text-muted small">({{ recipe.review.comment or "No comment added." }})</span>
+                                                {% else %}
+                                                    <span class="text-warning fw-bold me-3"><i class="fas fa-edit me-1"></i>Awaiting Review</span>
+                                                    <button type="button" class="btn btn-sm btn-outline-warning" 
+                                                            onclick="event.stopPropagation(); setReviewModalData('{{ recipe.recipe_id }}', '{{ recipe.recipe_name }}'); openReviewModal();">
+                                                         Leave Review
+                                                    </button>
+                                                {% endif %}
+                                            </div>
+                                            <div class="small mt-2 text-primary">Click for Ingredients & Steps</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="text-center py-5">
+                                <i class="fas fa-book-open fa-3x text-muted mb-3"></i>
+                                <p class="lead text-muted">Your eating history is empty!</p>
+                                <p>Start marking recipes as "Eaten" from the <a href="{{ url_for('dashboard') }}">Home (Recipe Menu)</a>.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade {% if active_tab == 'v-pills-diet-history' %}show active{% endif %}" id="v-pills-diet-history" role="tabpanel" aria-labelledby="v-pills-diet-history-tab">
+                    <div class="header-primary">
+                        <h3 class="mb-0"><i class="fas fa-chart-line me-2"></i>Diet History & Goals</h3>
+                        <p class="mb-0 small">Track nutrient consumption and get suggestions based on your profile goal.</p>
+                    </div>
+                    
+                    <div class="p-4">
+                        {# Safely check if report exists AND has the target goals (which implies calculation readiness) #}
+                        {% if not diet_report or not diet_report.target_goals %}
+                            <div class="text-center py-5">
+                                <i class="fas fa-exclamation-circle fa-3x text-muted mb-3"></i>
+                                <p class="lead text-muted">{{ (diet_report.suggestions | default(['Report generation is currently unavailable.']))[0] }}</p>
+                                <p>Go to **Edit Profile** to set your goals (Age, Gender, Weight, Height, Diet Goal).</p>
+                            </div>
+                        {% else %}
+
+                            <!-- START: CUMULATIVE PROGRESS CARD -->
+                            <h5 class="mb-3 text-dark"><i class="fas fa-box me-2"></i>Cumulative Progress (Plan Duration: {{ diet_report.target_goals.duration_months }} Months)</h5>
+                            <div class="card mb-4 border-primary shadow-sm">
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        {% set total_logged_days = diet_report.report.daily | length if diet_report.report.daily else 0 %}
+                                        <div class="col-6 col-md-3 mb-3 mb-md-0">
+                                            <p class="mb-0 small text-muted">Days Logged</p>
+                                            <h4 class="text-primary">{{ total_logged_days }}</h4>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3 mb-md-0">
+                                            <p class="mb-0 small text-muted">Total Cal Logged</p>
+                                            <h5 class="fw-bold">{{ diet_report.report.monthly[0].calories | round(0) if diet_report.report.monthly and diet_report.report.monthly[0].calories else 0 }} kcal</h5>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <p class="mb-0 small text-muted">Monthly Cal Target</p>
+                                            <h5 style="color: var(--accent-color);">{{ diet_report.target_goals.target_monthly_calories | round(0) }} kcal</h5>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <p class="mb-0 small text-muted">Plan Duration</p>
+                                            <h5 class="text-success">{{ diet_report.target_goals.duration_months }} Months</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: CUMULATIVE PROGRESS CARD -->
+                            
+                            <div class="card mb-4 border-success shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success"><i class="fas fa-bullseye me-2"></i>Goal Impact & Suggestions:</h5>
+                                    <ul class="list-group list-group-flush">
+                                        {% for suggestion in diet_report.suggestions %}
+                                            <li class="list-group-item">{{ suggestion | safe }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- START NEW: DETAILED PROGRESS CARD -->
+                            <h5 class="mb-3 text-dark"><i class="fas fa-tasks me-2"></i>Target & Progress Report</h5>
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-body">
+                                    
+                                    {% set log_days = diet_report.report.daily | length if diet_report.report.daily else 0 %}
+                                    
+                                    <h6 class="text-secondary mb-3 border-bottom pb-1">Daily Status (Average over {{ log_days }} days)</h6>
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-borderless">
+                                            <thead>
+                                                <tr class="table-light">
+                                                    <th>Nutrient</th>
+                                                    <th class="text-end">Actual Avg</th>
+                                                    <th class="text-end">Daily Target</th>
+                                                    <th class="text-end">Difference</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for nutrient, unit in [('calories', 'kcal'), ('protein', 'g'), ('carbs', 'g'), ('fat', 'g')] %}
+                                                {% set actual = diet_report.target_goals['actual_avg_' ~ nutrient] | round(0) %}
+                                                {% set target = diet_report.target_goals['target_' ~ nutrient] | round(0) %}
+                                                {% set difference = actual - target %}
+                                                {% set diff_color = 'text-success' if difference >= 0 else 'text-danger' %}
+                                                
+                                                {# Special logic for calorie deficit: negative difference is good (success) #}
+                                                {% if nutrient == 'calories' and diet_report.target_goals.goal == 'weight_loss' %}
+                                                    {% set diff_color = 'text-success' if difference <= 50 and difference >= -50 else ('text-warning' if difference > 50 else 'text-danger') %}
+                                                    {# Reverting sign display for clarity #}
+                                                    {% set diff_display = difference | abs %}
+                                                    {% set diff_icon = '<i class="fas fa-check me-1"></i> On Target' if difference | abs <= 50 else ('<i class="fas fa-arrow-up me-1"></i> Surplus' if difference > 50 else '<i class="fas fa-arrow-down me-1"></i> Deficit') %}
+                                                {% else %}
+                                                    {# Normal macro logic: hitting or exceeding target is usually good #}
+                                                    {% set diff_color = 'text-success' if difference >= 0 else 'text-danger' %}
+                                                    {% set diff_display = difference | abs %}
+                                                    {% set diff_icon = '<i class="fas fa-arrow-up me-1"></i> Surplus' if difference > 0 else ('<i class="fas fa-arrow-down me-1"></i> Deficit' if difference < 0 else '<i class="fas fa-check me-1"></i> On Target') %}
+                                                {% endif %}
+                                                
+                                                <tr class="{{ 'bg-light' if loop.index % 2 == 0 }}">
+                                                    <td><span class="fw-bold">{{ nutrient | capitalize }} ({{ unit }})</span></td>
+                                                    <td class="text-end">{{ actual }}</td>
+                                                    <td class="text-end">{{ target }}</td>
+                                                    <td class="text-end {{ diff_color }} fw-bold">
+                                                        {% if nutrient == 'calories' and diet_report.target_goals.goal == 'weight_loss' %}
+                                                            {{ diff_icon | safe }}
+                                                        {% else %}
+                                                            {% if difference > 0 %}<i class="fas fa-plus me-1"></i>{% elif difference < 0 %}<i class="fas fa-minus me-1"></i>{% else %}<i class="fas fa-check me-1"></i>{% endif %}
+                                                            {{ difference | abs }}
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <h6 class="text-secondary mb-3 border-bottom pb-1 mt-4">Monthly Status (Progress Bar)</h6>
+                                    <div class="row text-center">
+                                        <div class="col-md-6 mb-3">
+                                            {% set monthly_cal_logged = diet_report.report.monthly[0].calories | round(0) if diet_report.report.monthly and diet_report.report.monthly[0].calories else 0 %}
+                                            {% set monthly_cal_target = diet_report.target_goals.target_monthly_calories | round(0) %}
+                                            {% set monthly_cal_progress = (monthly_cal_logged / monthly_cal_target * 100) | round(1) %}
+                                            <p class="small text-muted mb-1">Calories Logged vs. Target ({{ diet_report.target_goals.duration_months }} Months)</p>
+                                            <div class="progress" role="progressbar" style="height: 25px;">
+                                                <div class="progress-bar progress-bar-calories" style="width: {{ [monthly_cal_progress, 100] | min }}%;" aria-valuenow="{{ monthly_cal_progress }}" aria-valuemin="0" aria-valuemax="100">{{ monthly_cal_progress }}%</div>
+                                            </div>
+                                            <p class="small mt-1" style="color: var(--accent-color);">{{ monthly_cal_logged }} / {{ monthly_cal_target }} kcal</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            {% set monthly_prot_logged = diet_report.report.monthly[0].protein | round(0) if diet_report.report.monthly and diet_report.report.monthly[0].protein else 0 %}
+                                            {% set monthly_prot_target = diet_report.target_goals.target_monthly_protein | round(0) %}
+                                            {% set monthly_prot_progress = (monthly_prot_logged / monthly_prot_target * 100) | round(1) %}
+                                            <p class="small text-muted mb-1">Protein Logged vs. Target</p>
+                                            <div class="progress" role="progressbar" style="height: 25px;">
+                                                <div class="progress-bar progress-bar-protein" style="width: {{ [monthly_prot_progress, 100] | min }}%;" aria-valuenow="{{ monthly_prot_progress }}" aria-valuemin="0" aria-valuemax="100">{{ monthly_prot_progress }}%</div>
+                                            </div>
+                                            <p class="small mt-1" style="color: var(--primary-color);">{{ monthly_prot_logged }} / {{ monthly_prot_target }} g</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- END NEW: DETAILED PROGRESS CARD -->
+
+                            <h5 class="mb-3 text-dark"><i class="fas fa-table me-2"></i>Detailed Reports</h5>
+                            <ul class="nav nav-tabs mb-3" id="reportTab" role="tablist">
+                                <li class="nav-item"><button class="nav-link active" id="daily-tab" data-bs-toggle="tab" data-bs-target="#daily-report" type="button">Daily</button></li>
+                                <li class="nav-item"><button class="nav-link" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly-report" type="button">Weekly</button></li>
+                                <li class="nav-item"><button class="nav-link" id="monthly-tab" data-bs-toggle="tab" data-bs-target="#monthly-report" type="button">Monthly</button></li>
+                            </ul>
+
+                            <div class="tab-content" id="reportTabContent">
+                                {% for period in ['daily', 'weekly', 'monthly'] %}
+                                <div class="tab-pane fade {% if period == 'daily' %}show active{% endif %}" id="{{ period }}-report" role="tabpanel">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date/Period</th>
+                                                    <th class="text-end">Calories (kcal)</th>
+                                                    <th class="text-end">Protein (g)</th>
+                                                    <th class="text-end">Carbs (g)</th>
+                                                    <th class="text-end">Fat (g)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for entry in diet_report.report[period] %}
+                                                <tr>
+                                                    <td>
+                                                        {% if period == 'daily' %}
+                                                            {{ entry.date | default('N/A') | string | truncate(10, True, '') }}
+                                                        {% elif period == 'weekly' %}
+                                                            Week ending {{ entry.date | default('N/A') | string | truncate(10, True, '') }}
+                                                        {% else %}
+                                                            {{ entry.date | default('N/A') | string | truncate(7, True, '') }}
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="text-end fw-bold">{{ entry.calories | round(0) }}</td>
+                                                    <td class="text-end">{{ entry.protein | round(0) }}</td>
+                                                    <td class="text-end">{{ entry.carbs | round(0) }}</td>
+                                                    <td class="text-end">{{ entry.fat | round(0) }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white" style="background-color: var(--primary-color) !important;">
+                <h5 class="modal-title" id="detail-recipe-name">Recipe Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="text-primary"><i class="fas fa-list-alt me-1"></i>Ingredients:</h6>
+                        <ul id="detail-ingredients" class="ingredients-list">
+                            </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-primary"><i class="fas fa-shoe-prints me-1"></i>Steps:</h6>
+                        <ol id="detail-steps" class="steps-list">
+                            </ol>
+                    </div>
+                </div>
+                <hr>
+                <h6 class="text-secondary"><i class="fas fa-chart-bar me-1"></i>Nutrition (per serving):</h6>
+                <p class="small" id="detail-nutritions"></p>
+                <p class="small text-danger" id="detail-missing-data" style="display:none;">
+                    Missing recipe data. Details were not found in the local **data.json** file.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reviewModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-dark" style="background-color: var(--primary-color) !important; color: white !important;">
+                <h5 class="modal-title"><i class="fas fa-star me-2"></i>Review Recipe: <span id="review-recipe-name"></span></h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="review-form">
+                    <div class="mb-3">
+                        <label for="rating-input" class="form-label">Your Rating (1-5)</label>
+                        <input type="number" class="form-control" id="rating-input" min="1" max="5" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comment-input" class="form-label">Comment (Optional)</label>
+                        <textarea class="form-control" id="comment-input" rows="3"></textarea>
+                    </div>
+                    <div id="review-message" class="mt-3 small text-center"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="submitReview()">Submit Review</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // --- Modal Variables and Functions (Details/Review) ---
+    let currentRecipeId = null;
+    let reviewModalElement = new bootstrap.Modal(document.getElementById('reviewModal'), {});
+    let detailModalElement = new bootstrap.Modal(document.getElementById('detailModal'), {});
+
+    // REPORT_DATA is kept as it is required to render the detailed table reports below.
+    const REPORT_DATA = {{ (diet_report.report if diet_report and diet_report.report else {}) | tojson }};
+
+    function openDetailsModal(recipe) {
+        document.getElementById('detail-recipe-name').textContent = recipe.recipe_name || 'Recipe Details';
+        const ingredientsList = document.getElementById('detail-ingredients');
+        const stepsList = document.getElementById('detail-steps');
+        const nutritionDiv = document.getElementById('detail-nutritions');
+        const missingDataAlert = document.getElementById('detail-missing-data');
+
+        ingredientsList.innerHTML = '';
+        stepsList.innerHTML = '';
+        missingDataAlert.style.display = 'none';
+
+        const isMissingData = recipe.recipe_name.includes("MISSING LOCAL DATA");
+
+        if (isMissingData) {
+            missingDataAlert.style.display = 'block';
+            ingredientsList.innerHTML = '<li>Ingredients unavailable.</li>';
+            stepsList.innerHTML = '<li>Steps unavailable.</li>';
+            nutritionDiv.innerHTML = 'N/A';
+        } else {
+            if (recipe.ingredients && recipe.ingredients.length > 0) {
+                recipe.ingredients.forEach(ing => {
+                    const li = document.createElement('li');
+                    li.textContent = `• ${ing}`;
+                    ingredientsList.appendChild(li);
+                });
+            } else {
+                ingredientsList.innerHTML = '<li><span class="text-danger">Ingredients data missing or empty.</span></li>';
+            }
+
+            if (recipe.steps && recipe.steps.length > 0) {
+                recipe.steps.forEach((step, index) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${index + 1}. ${step}`;
+                    stepsList.appendChild(li);
+                });
+            } else {
+                stepsList.innerHTML = '<li><span class="text-danger">Steps data missing or empty.</span></li>';
+            }
+
+            const nutritions = recipe.nutritions || {};
+            nutritionDiv.innerHTML = `
+                Calories: <strong>${nutritions.calories || 'N/A'} kcal</strong> | 
+                Protein: <strong>${nutritions.protein_g || 'N/A'} g</strong> | 
+                Carbs: <strong>${nutritions.carbs_g || 'N/A'} g</strong> | 
+                Fat: <strong>${nutritions.fat_g || 'N/A'} g</strong>
+            `;
+        }
+        detailModalElement.show();
+    }
+
+    function setReviewModalData(recipeId, recipeName) {
+        currentRecipeId = recipeId;
+        document.getElementById('review-recipe-name').textContent = recipeName;
+        document.getElementById('rating-input').value = '';
+        document.getElementById('comment-input').value = '';
+        document.getElementById('review-message').textContent = '';
+    }
+
+    function openReviewModal() {
+        if (currentRecipeId) {
+            reviewModalElement.show();
+        } else {
+            console.error("No recipe ID set for review.");
+        }
+    }
+    
+    function submitReview() {
+        const rating = document.getElementById('rating-input').value;
+        const comment = document.getElementById('comment-input').value;
+        const messageDiv = document.getElementById('review-message');
+
+        if (!currentRecipeId || rating === "" || parseInt(rating) < 1 || parseInt(rating) > 5) {
+            messageDiv.textContent = "Please provide a valid rating (1-5).";
+            return;
+        }
+
+        const payload = { rating: parseInt(rating), comment: comment };
+        messageDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+        fetch(`/review/${currentRecipeId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                messageDiv.innerHTML = `<span class="text-success">${data.message}</span>`;
+                setTimeout(() => {
+                    window.location.href = "{{ url_for('history') }}";
+                }, 1500);
+            } else {
+                messageDiv.innerHTML = `<span class="text-danger">${data.message}</span>`;
+            }
+        })
+        .catch(error => {
+            console.error('Error submitting review:', error);
+            messageDiv.innerHTML = '<span class="text-danger">A network error occurred.</span>';
+        });
+    }
+
+    // --- DOMContentLoaded Activation ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const activeTabId = "{{ active_tab }}";
+        
+        // General tab activation logic (remains for consistency)
+        if (activeTabId && activeTabId !== 'v-pills-profile') {
+            const tabElement = document.getElementById(activeTabId);
+            const linkElement = document.querySelector(`[href*="${activeTabId}"]`);
+            
+            if (tabElement && linkElement) {
+                // Deactivate default profile tab
+                document.getElementById('v-pills-profile').classList.remove('show', 'active');
+                document.getElementById('v-pills-profile-tab').classList.remove('active');
+
+                // Deactivate all sidebar links and tab panes
+                document.querySelectorAll('.nav-link.sidebar-link').forEach(link => link.classList.remove('active'));
+                document.querySelectorAll('.tab-pane.fade').forEach(tab => tab.classList.remove('show', 'active'));
+                
+                // Activate the requested tab link and pane
+                linkElement.classList.add('active');
+                tabElement.classList.add('show', 'active');
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
